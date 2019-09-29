@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://HeartBox.gd" type="Script" id=1]
+[ext_resource path="res://HeartFull.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://VehicleLayer.gd" type="Script" id=4]
+[ext_resource path="res://Tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LadderAreas.gd" type="Script" id=7]
+[ext_resource path="res://PauseLayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GameOverLayer.gd" type="Script" id=9]
+[ext_resource path="res://Pixel Simplicity GUI/restart_green_default.png" type="Texture" id=10]
+[ext_resource path="res://Pixel Simplicity GUI/restart_green_active.png" type="Texture" id=11]
+[ext_resource path="res://Pixel Simplicity GUI/quit_red_default.png" type="Texture" id=12]
+[ext_resource path="res://Pixel Simplicity GUI/quit_red_active.png" type="Texture" id=13]
+[ext_resource path="res://fonts/TerminalGrotesque.tres" type="DynamicFont" id=14]
+[ext_resource path="res://game_over.wav" type="AudioStream" id=15]
+[ext_resource path="res://QuitKey.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Neon-Runner_Looping.ogg" type="AudioStream" id=17]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeartBox" type="HBoxContainer" parent="CanvasLayer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+
+[node name="HeartFull" parent="CanvasLayer/HeartBox" instance=ExtResource( 2 )]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+layer = -5
+
+[node name="VehicleLayer" type="CanvasLayer" parent="."]
+layer = -1
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="VehicleLayer"]
+autostart = true
+
+[node name="Platforms" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 45.5644, 250.896 )
+scale = Vector2( 2, 2 )
+
+[node name="LadderAreas" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="PauseLayer" parent="." instance=ExtResource( 8 )]
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="GameOverLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.878431 )
+
+[node name="Restart" type="TextureButton" parent="GameOverLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -7.0
+margin_right = -16.0
+margin_bottom = 7.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+
+[node name="Quit" type="TextureButton" parent="GameOverLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -7.0
+margin_right = 30.0
+margin_bottom = 7.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="GameOverLayer"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -167.0
+margin_top = 47.1029
+margin_right = 167.0
+margin_bottom = 111.103
+custom_fonts/font = ExtResource( 14 )
+text = "Game Over"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="GameOverLayer"]
+stream = ExtResource( 15 )
+volume_db = -18.087
+
+[node name="QuitKey" parent="." instance=ExtResource( 16 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 17 )
+volume_db = -7.173
+autoplay = true
+[connection signal="timeout" from="VehicleLayer/Timer" to="VehicleLayer" method="add_vehicle"]
+[connection signal="die" from="Player" to="GameOverLayer" method="show"]
+[connection signal="lives" from="Player" to="CanvasLayer/HeartBox" method="set_hearts"]
+[connection signal="player_on_ladder" from="LadderAreas" to="Player" method="set_on_ladder"]
+[connection signal="pressed" from="GameOverLayer/Restart" to="GameOverLayer" method="_on_Restart_pressed"]
+[connection signal="pressed" from="GameOverLayer/Quit" to="GameOverLayer" method="_on_Quit_pressed"]

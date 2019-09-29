@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://StartGame.gd" type="Script" id=2]
+[ext_resource path="res://warped city files/ENVIRONMENT/background/skyline-b.png" type="Texture" id=3]
+[ext_resource path="res://fonts/TerminalGrotesque.tres" type="DynamicFont" id=4]
+[ext_resource path="res://QuitKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Pixel Simplicity GUI/quit_blue_default.png" type="Texture" id=6]
+[ext_resource path="res://Pixel Simplicity GUI/quit_blue_active.png" type="Texture" id=7]
+[ext_resource path="res://Pixel Simplicity GUI/quit_red_default.png" type="Texture" id=8]
+[ext_resource path="res://Pixel Simplicity GUI/quit_red_active.png" type="Texture" id=9]
+[ext_resource path="res://Cyber-Dream-Loop.ogg" type="AudioStream" id=10]
+[ext_resource path="res://select.wav" type="AudioStream" id=11]
+
+[node name="StartGame" type="Control"]
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -519.027
+margin_top = -389.562
+margin_right = 280.973
+margin_bottom = -89.5617
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Name" type="Label" parent="."]
+margin_top = 21.9533
+margin_right = 640.0
+margin_bottom = 152.953
+custom_fonts/font = ExtResource( 4 )
+text = "Hunt for the
+SHADOW RIDER"
+align = 1
+uppercase = true
+
+[node name="Play" type="Button" parent="."]
+margin_left = 215.0
+margin_top = 176.0
+margin_right = 319.0
+margin_bottom = 196.0
+rect_scale = Vector2( 2, 2 )
+text = "Play"
+
+[node name="Help" type="Button" parent="."]
+margin_left = 216.0
+margin_top = 234.0
+margin_right = 320.0
+margin_bottom = 254.0
+rect_scale = Vector2( 2, 2 )
+text = "Help"
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 216.0
+margin_top = 288.397
+margin_right = 320.0
+margin_bottom = 308.397
+rect_scale = Vector2( 2, 2 )
+text = "Credits"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="QuitKey" parent="." instance=ExtResource( 5 )]
+
+[node name="Return" type="TextureButton" parent="."]
+margin_left = 604.0
+margin_top = -352.0
+margin_right = 618.0
+margin_bottom = -338.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+
+[node name="Return2" type="TextureButton" parent="."]
+margin_left = 1244.0
+margin_top = 8.0
+margin_right = 1258.0
+margin_bottom = 22.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+
+[node name="Quit" type="TextureButton" parent="."]
+margin_left = 604.0
+margin_top = 8.0
+margin_right = 618.0
+margin_bottom = 22.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+
+[node name="CreditsText" type="Label" parent="."]
+margin_top = -360.0
+margin_right = 320.0
+margin_bottom = -180.0
+rect_scale = Vector2( 2, 2 )
+text = "Art by Ansimuz
+
+UI by domsson and TokyoGeisha
+
+Music by Eric Matyas
+www.soundimage.org
+
+Fonts by Raphaël Bastide and Jayvee Enaguas
+
+Tools: Godot, Sfxr, GIMP, Audacity, Ubuntu
+
+Made for Open Jam 2019 by bluestreak0
+License: GPLv3"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HelpText" type="Label" parent="."]
+margin_left = 640.0
+margin_right = 960.0
+margin_bottom = 180.0
+rect_scale = Vector2( 2, 2 )
+text = "Move: Arrow keys
+Fire: Z
+Pause: Escape
+Quit: Q"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -17.931
+autoplay = true
+
+[node name="SelectBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -18.652
+[connection signal="pressed" from="Play" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Help" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Return2" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

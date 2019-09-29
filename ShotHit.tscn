@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Explosion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://shot_hit.wav" type="AudioStream" id=2]
+
+[node name="ShotHit" instance=ExtResource( 1 )]
+animation = "ShotHit"
+frame = 2
+
+[node name="AudioStreamPlayer2D" parent="." index="0"]
+stream = ExtResource( 2 )

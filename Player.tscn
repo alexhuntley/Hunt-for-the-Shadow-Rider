@@ -1,0 +1,139 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-1.png" type="Texture" id=2]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-2.png" type="Texture" id=3]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-3.png" type="Texture" id=4]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-4.png" type="Texture" id=5]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-5.png" type="Texture" id=6]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-6.png" type="Texture" id=7]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-7.png" type="Texture" id=8]
+[ext_resource path="res://warped city files/SPRITES/player/run-shoot/run-shoot-8.png" type="Texture" id=9]
+[ext_resource path="res://warped city files/SPRITES/player/idle/idle-1.png" type="Texture" id=10]
+[ext_resource path="res://warped city files/SPRITES/player/idle/idle-2.png" type="Texture" id=11]
+[ext_resource path="res://warped city files/SPRITES/player/idle/idle-3.png" type="Texture" id=12]
+[ext_resource path="res://warped city files/SPRITES/player/idle/idle-4.png" type="Texture" id=13]
+[ext_resource path="res://warped city files/SPRITES/player/shoot/shoot.png" type="Texture" id=14]
+[ext_resource path="res://warped city files/SPRITES/player/jump/jump-1.png" type="Texture" id=15]
+[ext_resource path="res://warped city files/SPRITES/player/jump/jump-2.png" type="Texture" id=16]
+[ext_resource path="res://warped city files/SPRITES/player/jump/jump-3.png" type="Texture" id=17]
+[ext_resource path="res://warped city files/SPRITES/player/crouch/crouch.png" type="Texture" id=18]
+[ext_resource path="res://warped city files/SPRITES/player/hurt/hurt.png" type="Texture" id=19]
+[ext_resource path="res://warped city files/SPRITES/player/climb/climb-1.png" type="Texture" id=20]
+[ext_resource path="res://warped city files/SPRITES/player/climb/climb-2.png" type="Texture" id=21]
+[ext_resource path="res://warped city files/SPRITES/player/climb/climb-3.png" type="Texture" id=22]
+[ext_resource path="res://warped city files/SPRITES/player/climb/climb-4.png" type="Texture" id=23]
+[ext_resource path="res://warped city files/SPRITES/player/climb/climb-5.png" type="Texture" id=24]
+[ext_resource path="res://warped city files/SPRITES/player/climb/climb-6.png" type="Texture" id=25]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-1.png" type="Texture" id=26]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-2.png" type="Texture" id=27]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-3.png" type="Texture" id=28]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-4.png" type="Texture" id=29]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-5.png" type="Texture" id=30]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-6.png" type="Texture" id=31]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-7.png" type="Texture" id=32]
+[ext_resource path="res://warped city files/SPRITES/player/run/run-8.png" type="Texture" id=33]
+[ext_resource path="res://warped city files/SPRITES/player/jump/jump-4.png" type="Texture" id=34]
+[ext_resource path="res://fire.wav" type="AudioStream" id=35]
+[ext_resource path="res://hurt.wav" type="AudioStream" id=36]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "RunShoot",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "Shoot",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "Crouch",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "Hurt",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Climb",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 34 ) ],
+"loop": false,
+"name": "JumpShoot",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.81919
+height = 28.2734
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "JumpShoot"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.84791, 14.2719 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 2, 2 )
+current = true
+smoothing_enabled = true
+
+[node name="ShotDelay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="RunShootSpawn" type="Node2D" parent="Spawns"]
+position = Vector2( 29, -3 )
+
+[node name="ShootSpawn" type="Node2D" parent="Spawns"]
+position = Vector2( 20, -8 )
+
+[node name="JumpShootSpawn" type="Node2D" parent="Spawns"]
+position = Vector2( 27, -8 )
+
+[node name="CrouchShootSpawn" type="Node2D" parent="Spawns"]
+position = Vector2( 22, 10 )
+
+[node name="ShotPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
+volume_db = -20.194
+
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="HurtPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 36 )
+volume_db = -19.724

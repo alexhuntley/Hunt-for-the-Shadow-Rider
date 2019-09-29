@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="Prop" type="Sprite"]
+scale = Vector2( 2, 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Neon-Runner_Looping.ogg-4271046d3ec95d7d4f27499d66678d73.oggstr"
+
+[deps]
+
+source_file="res://Neon-Runner_Looping.ogg"
+dest_files=[ "res://.import/Neon-Runner_Looping.ogg-4271046d3ec95d7d4f27499d66678d73.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

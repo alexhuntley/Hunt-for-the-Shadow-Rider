@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://props/AnimatedProp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://warped city files/ENVIRONMENT/props/banner-big/banner-big-1.png" type="Texture" id=2]
+[ext_resource path="res://warped city files/ENVIRONMENT/props/banner-big/banner-big-2.png" type="Texture" id=3]
+[ext_resource path="res://warped city files/ENVIRONMENT/props/banner-big/banner-big-3.png" type="Texture" id=4]
+[ext_resource path="res://warped city files/ENVIRONMENT/props/banner-big/banner-big-4.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="BannerBig" index="0" instance=ExtResource( 1 )]
+frames = SubResource( 1 )
+frame = 1

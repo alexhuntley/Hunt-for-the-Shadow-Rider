@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://Intro.gd" type="Script" id=2]
+[ext_resource path="res://beep.wav" type="AudioStream" id=3]
+[ext_resource path="res://beep_long.wav" type="AudioStream" id=4]
+[ext_resource path="res://QuitKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PauseLayer.tscn" type="PackedScene" id=6]
+
+[node name="Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -320.0
+margin_bottom = -180.0
+rect_scale = Vector2( 2, 1.9921 )
+custom_colors/default_color = Color( 0.607843, 0.835294, 0.823529, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.08
+autostart = true
+
+[node name="Beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="LongBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+
+[node name="QuitKey" parent="." instance=ExtResource( 5 )]
+
+[node name="PauseLayer" parent="." instance=ExtResource( 6 )]
+[connection signal="timeout" from="Timer" to="." method="add_char"]
+[connection signal="finished" from="LongBeep" to="." method="_on_LongBeep_finished"]

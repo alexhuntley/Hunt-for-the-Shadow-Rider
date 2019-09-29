@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Shot.gd" type="Script" id=1]
+[ext_resource path="res://warped city files/SPRITES/misc/shot/shot-1.png" type="Texture" id=2]
+[ext_resource path="res://warped city files/SPRITES/misc/shot/shot-2.png" type="Texture" id=3]
+[ext_resource path="res://warped city files/SPRITES/misc/shot/shot-3.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.0
+height = 6.0
+
+[node name="Shot" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+collision_layer = 8
+collision_mask = 6
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ScaleTween" type="Tween" parent="."]
+
+[node name="OpacityTween" type="Tween" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

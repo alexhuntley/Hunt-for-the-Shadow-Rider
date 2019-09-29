@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/turret_hum.wav-a6ea28681a80cccc7b45163f0d11e270.sample"
+
+[deps]
+
+source_file="res://turret_hum.wav"
+dest_files=[ "res://.import/turret_hum.wav-a6ea28681a80cccc7b45163f0d11e270.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

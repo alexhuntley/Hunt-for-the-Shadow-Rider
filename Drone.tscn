@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Drone.gd" type="Script" id=1]
+[ext_resource path="res://warped city files/SPRITES/misc/drone/drone-1.png" type="Texture" id=2]
+[ext_resource path="res://warped city files/SPRITES/misc/drone/drone-2.png" type="Texture" id=3]
+[ext_resource path="res://warped city files/SPRITES/misc/drone/drone-3.png" type="Texture" id=4]
+[ext_resource path="res://warped city files/SPRITES/misc/drone/drone-4.png" type="Texture" id=5]
+[ext_resource path="res://drone_hum_loop.wav" type="AudioStream" id=6]
+[ext_resource path="res://hunting.wav" type="AudioStream" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Forward",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Observe",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "LeftToRight",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "RightToLeft",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.385
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hover"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 150.0
+
+[node name="Drone" type="KinematicBody2D" groups=[
+"Enemies",
+]]
+position = Vector2( 0, -1.06341 )
+scale = Vector2( 2, 2 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -2.11811 )
+frames = SubResource( 1 )
+animation = "Forward"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.79917, 5.01197 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hover = SubResource( 3 )
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource( 4 )
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -6.554
+autoplay = true
+attenuation = 2.0
+
+[node name="Hunting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.826
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

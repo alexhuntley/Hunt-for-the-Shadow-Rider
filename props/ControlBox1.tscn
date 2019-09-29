@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://props/Prop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://warped city files/ENVIRONMENT/props/control-box-1.png" type="Texture" id=2]
+
+[node name="ControlBox1" index="0" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )

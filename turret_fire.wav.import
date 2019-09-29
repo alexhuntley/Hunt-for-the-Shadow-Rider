@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/turret_fire.wav-7b5a5bbc05eef6597a46c451174a9383.sample"
+
+[deps]
+
+source_file="res://turret_fire.wav"
+dest_files=[ "res://.import/turret_fire.wav-7b5a5bbc05eef6597a46c451174a9383.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

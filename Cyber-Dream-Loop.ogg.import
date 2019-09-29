@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cyber-Dream-Loop.ogg-b6c0bbcd2149940fbfbd7176cf53f9f9.oggstr"
+
+[deps]
+
+source_file="res://Cyber-Dream-Loop.ogg"
+dest_files=[ "res://.import/Cyber-Dream-Loop.ogg-b6c0bbcd2149940fbfbd7176cf53f9f9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

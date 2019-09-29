@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PathDrone.gd" type="Script" id=1]
+[ext_resource path="res://DroneController.gd" type="Script" id=2]
+[ext_resource path="res://Drone.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 19, 21, 0, 0, 0, 0, 260, 20, 0, 0, 0, 0, 260, 70, 0, 0, 0, 0, 20, 70, 0, 0, 0, 0, 19, 21 )
+}
+
+[node name="PathDrone" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="DroneController" type="PathFollow2D" parent="."]
+position = Vector2( 19, 21 )
+rotate = false
+script = ExtResource( 2 )
+
+[node name="Drone" parent="DroneController" instance=ExtResource( 3 )]
