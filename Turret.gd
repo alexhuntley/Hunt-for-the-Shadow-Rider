@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var rotates = false
 var rotating = false
+export (bool) var on = true
 
 enum Direction {LEFT, RIGHT}
 export (Direction) var direction = Direction.LEFT
@@ -10,8 +11,23 @@ var shot = load("res://EnemyShot.tscn")
 var explosion = load("res://Explosion.tscn")
 
 const pitch_increase = 0.6
+var started = false
+
+func start():
+	$Hum.play()
+	$ShotDelay.start()
+	$TurnOn.play()
+	started = true
 
 func _process(delta):
+	if direction == Direction.LEFT:
+		$AnimatedSprite.play("Left")
+		$Spawns.scale.x = 1
+	else:
+		$AnimatedSprite.play("Right")
+		$Spawns.scale.x = -1
+	if not started:
+		return
 	if rotating:
 		return
 	if rotates:
@@ -27,15 +43,9 @@ func _process(delta):
 			direction = new_direction
 			$Hum.pitch_scale = 1.05
 			return
-	if direction == Direction.LEFT:
-		$AnimatedSprite.play("Left")
-		$Spawns.scale.x = 1
-	else:
-		$AnimatedSprite.play("Right")
-		$Spawns.scale.x = -1
 	var elapsed = ($ShotDelay.wait_time - $ShotDelay.time_left)/$ShotDelay.wait_time
 	$Hum.pitch_scale = 0.8 + pitch_increase*pow(elapsed, 1)
-	$Hum.volume_db = -30 + 25*elapsed
+	$Hum.volume_db = -40 + 25*elapsed
 
 func _on_ShotDelay_timeout():
 	var bullet = shot.instance()
@@ -56,3 +66,8 @@ func _on_AnimatedSprite_animation_finished():
 		$ShotDelay.start()
 		rotating = false
 		$Hum.pitch_scale = 0.8
+
+
+func _on_DetectionArea_body_entered(body):
+	if body.name == "Player" and on and not started:
+		start()

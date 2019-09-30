@@ -1,6 +1,7 @@
 extends Control
 
-var final_text = """Loading message......done^#Hunter,^
+export (PackedScene) var next_scene = load("res://Levels/Level1.tscn")
+export (String, MULTILINE) var final_text = """Loading message......done^#Hunter,^
 
 A rogue Shadow Rider has escaped to the year
 2078.^  You must track down and capture him at
@@ -28,7 +29,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene("res://Levels/Level1.tscn")
+		get_tree().change_scene_to(next_scene)
 
 func add_char():
 	if char_num >= final_text.length():

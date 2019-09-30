@@ -8,7 +8,7 @@
 - Hearts by TokyoGeisha, license: CC-0
 	- https://opengameart.org/content/pixel-hearts
 ## Music
-- Neon Runner by Eric Matyas, license: CC-BY 4.0
+- Neon Runner, Quirky Runner, Electric Rain and Mayhem by Eric Matyas, license: CC-BY 4.0
 	- https://opengameart.org/content/neon-runner
 	- www.soundimage.org
 ## Fonts
@@ -19,5 +19,7 @@
 ## Tools
 - Godot Engine
 - Sfxr
+- LMMS
+- Audacity
 - GIMP
 - Ubuntu

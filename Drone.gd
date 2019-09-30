@@ -31,6 +31,7 @@ func _process(delta):
 			hunting = true
 			$Hunting.play()
 			$AnimatedSprite.animation = "Forward"
+			$AnimationPlayer.stop()
 	if $AnimatedSprite.animation == "Forward":
 		$AnimatedSprite.flip_h = not left
 	if hunting:

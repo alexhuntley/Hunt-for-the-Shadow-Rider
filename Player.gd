@@ -3,7 +3,7 @@ extends KinematicBody2D
 const ACCEL = 4000
 const GRAVITY = 800
 const JUMP_SPEED = 450
-const CLIMB_SPEED = 100
+const CLIMB_SPEED = 60
 
 var velocity = Vector2()
 var jumping = false
@@ -24,7 +24,7 @@ signal die
 func _physics_process(delta):
 	if $HurtTimer.time_left:
 		$AnimatedSprite.animation = "Hurt"
-		velocity.x = $HurtTimer.time_left * 400 * flinch_direction
+		velocity.x = $HurtTimer.time_left * 1000 * flinch_direction
 		apply_gravity(delta)
 		velocity = move_and_slide(velocity, Vector2.UP)
 		return
@@ -41,7 +41,7 @@ func _physics_process(delta):
 		run(false, delta)
 	elif not jumping:
 		new_anim = "Shoot" if shooting else "Idle"
-		if shooting:
+		if shooting and not on_ladder:
 			fire($Spawns/ShootSpawn)
 	apply_resistance(delta)
 	apply_gravity(delta)
@@ -79,10 +79,10 @@ func apply_gravity(delta):
 		velocity.y += GRAVITY * delta
 func apply_resistance(delta):
 	# Air resistance
-	velocity.x -= 0.002*velocity.x*abs(velocity.x) * delta
+	velocity.x -= 0.01*velocity.x*abs(velocity.x) * delta
 	# Friction
 	if is_on_floor() or on_ladder:
-		velocity.x = lerp(velocity.x, 0, 0.12)
+		velocity.x = lerp(velocity.x, 0, 0.1)
 
 func fire(spawn: Node2D):
 	if $ShotDelay.time_left:
@@ -97,13 +97,13 @@ func fire(spawn: Node2D):
 	
 func run(left: bool, delta: float):
 	self.left = left
-	var air_multiplier = 0.1 if not (is_on_floor() or on_ladder) else 1.0
+	var air_multiplier = 0.3 if not (is_on_floor()) else 1.0
 	velocity.x -= ACCEL*delta*air_multiplier*(1 if left else -1)
 	$AnimatedSprite.flip_h = left
 	$Spawns.scale.x = -1 if left else 1
 	if not jumping:
 		new_anim = "RunShoot" if shooting else "Run"
-		if shooting:
+		if shooting and not on_ladder:
 			fire($Spawns/RunShootSpawn)
 
 func set_on_ladder(yes):

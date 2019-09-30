@@ -1,39 +1,48 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Turret.gd" type="Script" id=1]
-[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-2.png" type="Texture" id=2]
-[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-3.png" type="Texture" id=3]
-[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-4.png" type="Texture" id=4]
-[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-1.png" type="Texture" id=5]
-[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-5.png" type="Texture" id=6]
+[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-1.png" type="Texture" id=2]
+[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-5.png" type="Texture" id=3]
+[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-3.png" type="Texture" id=4]
+[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-2.png" type="Texture" id=5]
+[ext_resource path="res://warped city files/SPRITES/misc/turret/turret-4.png" type="Texture" id=6]
 [ext_resource path="res://turret_fire.wav" type="AudioStream" id=7]
 [ext_resource path="res://turret_hum_loop.wav" type="AudioStream" id=8]
+[ext_resource path="res://turret_on.wav" type="AudioStream" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "LeftToRight",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "RightToLeft",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "Right",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Centre",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "LeftToRight",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "RightToLeft",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 10 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 100.0
 
 [node name="Turret" type="KinematicBody2D" groups=[
 "Enemies",
@@ -42,6 +51,9 @@ scale = Vector2( 2, 2 )
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -12 )
@@ -60,17 +72,27 @@ position = Vector2( 0, -12 )
 position = Vector2( -28, -7.5 )
 
 [node name="ShotDelay" type="Timer" parent="."]
-autostart = true
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 0.5, 0 )
 stream = ExtResource( 7 )
-volume_db = -8.478
+volume_db = -16.956
 
 [node name="Hum" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = -30.0
 pitch_scale = 0.8
-autoplay = true
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource( 3 )
+
+[node name="TurnOn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -23.739
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="ShotDelay" to="." method="_on_ShotDelay_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]

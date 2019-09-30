@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Electric-Rain_Looping.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Drone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PathDrone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://EndOfLevel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/BossLevel.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 208, 0, 0, 0, 0, 0, -16, 0, 0, 0, 0, 0, -16, 16, 0, 0, 0, 0, 208, 16, 0, 0, 0, 0, 208, 0 )
+}
+
+[node name="Main" index="0" instance=ExtResource( 1 )]
+
+[node name="Platforms" parent="." index="3"]
+tile_data = PoolIntArray( 196779, 1, 0, 196780, 1, 0, 196781, 1, 0, 196782, 1, 0, 196783, 1, 0, 196784, 1, 0, 196785, 1, 0, 196786, 1, 0, 196787, 1, 0, 196788, 1, 0, 196789, 1, 0, 196790, 1, 0, 196791, 1, 0, 262317, 4, 0, 327853, 4, 0, 393389, 4, 0, 458925, 4, 0, 524461, 4, 0, 589997, 4, 0, 655533, 5, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720925, 1, 0, 720926, 1, 0, 720927, 1, 0, 720928, 1, 0, 720929, 1, 0, 720930, 1, 0, 720931, 1, 0, 721054, 1, 0, 721055, 1, 0, 721056, 1, 0, 721057, 1, 0, 721058, 1, 0, 721059, 1, 0, 721060, 1, 0, 721061, 1, 0, 721062, 1, 0, 721063, 1, 0, 721064, 1, 0, 721065, 1, 0, 721066, 1, 0, 721067, 1, 0, 721068, 1, 0, 721069, 1, 0, 721070, 1, 0, 721071, 2, 0, 721072, 2, 0, 721073, 3, 0, 786567, 1, 0, 786568, 1, 0, 786569, 1, 0, 786570, 1, 0, 786571, 1, 0, 786572, 1, 0, 786573, 1, 0, 786574, 1, 0, 852115, 1, 0, 852116, 1, 0, 852117, 1, 0, 852118, 1, 0, 852119, 1, 0, 852120, 1, 0, 852121, 1, 0, 852122, 1, 0, 917542, 1, 0, 917543, 1, 0, 917544, 1, 0, 917545, 1, 0, 917546, 1, 0, 917547, 1, 0, 917548, 1, 0, 1048700, 1, 0, 1048701, 1, 0, 1048702, 1, 0, 1048703, 1, 0, 1048704, 1, 0, 1048705, 1, 0, 1048706, 1, 0, 1048707, 1, 0, 1048708, 1, 0, 1048709, 1, 0, 1179677, 1, 0, 1179678, 1, 0, 1179679, 1, 0, 1179680, 1, 0, 1179681, 1, 0, 1179682, 1, 0, 1179683, 1, 0, 1310814, 1, 0, 1310815, 1, 0, 1310816, 1, 0, 1310817, 1, 0, 1310818, 1, 0, 1310819, 1, 0, 1310820, 1, 0, 1310821, 1, 0, 1310822, 1, 0, 1310823, 1, 0, 1310824, 1, 0, 1310825, 1, 0, 1310826, 1, 0, 1310827, 1, 0, 1310828, 1, 0, 1310829, 1, 0, 1310830, 1, 0, 1310831, 1, 0, 1310832, 1, 0, 1310833, 1, 0, 1310834, 1, 0, 1310835, 1, 0, 1310836, 1, 0, 1310837, 1, 0, 1310838, 1, 0, 1310839, 1, 0, 1310840, 1, 0, 1310841, 1, 0, 1441830, 1, 0, 1441831, 1, 0, 1441832, 1, 0, 1441833, 1, 0, 1441834, 1, 0, 1441835, 1, 0, 1441836, 1, 0, 1441845, 1, 0, 1441846, 1, 0, 1441847, 1, 0, 1441848, 1, 0, 1441849, 1, 0, 1441850, 1, 0, 1441851, 1, 0, 1441852, 1, 0, 1441853, 1, 0, 1441854, 1, 0, 1441855, 1, 0, 1441856, 1, 0, 1441857, 1, 0, 1441858, 1, 0, 1441859, 1, 0, 1441860, 1, 0, 1441861, 1, 0, 1441862, 1, 0, 1441863, 1, 0, 1441864, 1, 0, 1441865, 1, 0, 1441866, 1, 0, 1441867, 1, 0, 1441868, 1, 0, 1441869, 1, 0, 1441870, 1, 0, 1441871, 1, 0, 1441872, 1, 0, 1441873, 1, 0, 1441874, 1, 0, 1441875, 1, 0, 1441876, 1, 0, 1441877, 1, 0, 1441878, 1, 0, 1441879, 1, 0, 1441880, 1, 0, 1441881, 1, 0 )
+
+[node name="Player" parent="." index="4"]
+position = Vector2( 4049, 248.961 )
+
+[node name="Music" parent="." index="9"]
+stream = ExtResource( 2 )
+
+[node name="Drone" parent="." index="10" instance=ExtResource( 3 )]
+position = Vector2( 403.36, 273.593 )
+hunts = true
+
+[node name="Drone2" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( 492.258, 273.593 )
+hunts = true
+
+[node name="Drone3" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 585.8, 273.593 )
+hunts = true
+
+[node name="Drone4" parent="." index="13" instance=ExtResource( 3 )]
+position = Vector2( 1120, 111.103 )
+hunts = true
+
+[node name="Drone6" parent="." index="14" instance=ExtResource( 3 )]
+position = Vector2( 1523.6, 360 )
+hunts = true
+
+[node name="Drone8" parent="." index="15" instance=ExtResource( 3 )]
+position = Vector2( 1904, 496 )
+hunts = true
+
+[node name="Drone9" parent="." index="16" instance=ExtResource( 3 )]
+position = Vector2( 2656, 477.343 )
+hunts = true
+
+[node name="Drone11" parent="." index="17" instance=ExtResource( 3 )]
+position = Vector2( 3168, 401 )
+hunts = true
+
+[node name="Drone12" parent="." index="18" instance=ExtResource( 3 )]
+position = Vector2( 3456, 401 )
+hunts = true
+
+[node name="Drone13" parent="." index="19" instance=ExtResource( 3 )]
+position = Vector2( 3760, 400 )
+hunts = true
+
+[node name="Drone16" parent="." index="20" instance=ExtResource( 3 )]
+position = Vector2( 4384, 421.107 )
+hunts = true
+
+[node name="Drone14" parent="." index="21" instance=ExtResource( 3 )]
+position = Vector2( 3328, 736 )
+hunts = true
+
+[node name="Drone17" parent="." index="22" instance=ExtResource( 3 )]
+position = Vector2( 5152, 160 )
+hunts = true
+
+[node name="Drone15" parent="." index="23" instance=ExtResource( 3 )]
+position = Vector2( 3664, 720 )
+hunts = true
+
+[node name="Drone10" parent="." index="24" instance=ExtResource( 3 )]
+position = Vector2( 2288, 816 )
+hunts = true
+
+[node name="Drone7" parent="." index="25" instance=ExtResource( 3 )]
+position = Vector2( 1376, 624 )
+
+[node name="Turret" parent="." index="26" instance=ExtResource( 4 )]
+position = Vector2( 1248, 448 )
+rotates = true
+
+[node name="Turret2" parent="." index="27" instance=ExtResource( 4 )]
+position = Vector2( 4832, 416 )
+rotates = true
+
+[node name="Turret3" parent="." index="28" instance=ExtResource( 4 )]
+position = Vector2( 5648, 352 )
+rotates = true
+
+[node name="PathDrone" parent="." index="29" instance=ExtResource( 5 )]
+position = Vector2( 944, 448 )
+curve = SubResource( 1 )
+
+[node name="PathDrone2" parent="." index="30" instance=ExtResource( 5 )]
+position = Vector2( 2192, 608 )
+curve = SubResource( 1 )
+
+[node name="PathDrone5" parent="." index="31" instance=ExtResource( 5 )]
+position = Vector2( 4352, 239.764 )
+curve = SubResource( 1 )
+
+[node name="PathDrone6" parent="." index="32" instance=ExtResource( 5 )]
+position = Vector2( 4352, 319.764 )
+curve = SubResource( 1 )
+
+[node name="PathDrone3" parent="." index="33" instance=ExtResource( 5 )]
+position = Vector2( 1728, 608 )
+curve = SubResource( 1 )
+
+[node name="PathDrone4" parent="." index="34" instance=ExtResource( 5 )]
+position = Vector2( 2544, 608 )
+curve = SubResource( 1 )
+
+[node name="EndOfLevel" parent="." index="35" instance=ExtResource( 6 )]
+position = Vector2( 5792, 48 )
+next_level = ExtResource( 7 )

@@ -1,22 +1,173 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.tscn" type="PackedScene" id=1]
-[ext_resource path="res://PathDrone.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Turret.tscn" type="PackedScene" id=3]
+[ext_resource path="res://LadderArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Drone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PathDrone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EndOfLevel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Level2.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 10, 283.7 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 240 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10, 192 )
+
+[sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 127.127, -10.925, 0, 0, 0, 0, 233.622, 16.15, 0, 0, 0, 0, 207.45, 103.692, 0, 0, 0, 0, 10.705, 99.18, 0, 0, 0, 0, -46.1525, 16.15, 0, 0, 0, 0, 127.127, -10.925 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 16, 112, 0, 0, 0, 0, 16, -32, 0, 0, 0, 0, 0, -32 )
 }
 
-[node name="Main" index="0" instance=ExtResource( 1 )]
+[sub_resource type="Curve2D" id=9]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -32, 52.3822, 0, 0, 0, 0, 320, 52.3822, 0, 0, 0, 0, 320, 20.3822, 0, 0, 0, 0, -32, 20.3822, 0, 0, 0, 0, -32, 52.3822, 0, 0, 0, 0, -32, 68.3822 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 16, 32, 0, 0, 0, 0, 400, 32, 0, 0, 0, 0, 400, 48, 0, 0, 0, 0, 16, 48, 0, 0, 0, 0, 16, 32 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( -9.02503, 33.3926, 9.02503, -33.3926, -48, -94.9366, -0.902503, -27.9776, 0.902503, 27.9776, 96, -94.9366, 0, -47.8327, 0, 47.8327, 96, -46.9366, 0.902503, -39.7101, -0.902503, 39.7101, -48, 97.0634, 0.902503, -28.8801, -0.902503, 28.8801, -48, 145.063, 0, 29.7826, 0, -29.7826, 96, 145.063, -0.902503, 42.4176, 0.902503, -42.4176, 96, 97.0634, 0.902503, 50.5402, -0.902503, -50.5402, -48, -46.9366, 0, 0, 0, 0, -48, -94.9366 )
+}
+
+[node name="Main" instance=ExtResource( 1 )]
 
 [node name="Platforms" parent="." index="3"]
-tile_data = PoolIntArray( 655360, 0, 0, 655361, 1, 0, 655362, 3, 0, 786431, 0, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 2, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 720919, 1, 0, 720920, 1, 0, 720921, 1, 0, 720922, 1, 0, 720923, 1, 0, 720924, 1, 0, 720925, 1, 0, 720926, 1, 0, 720927, 1, 0, 720928, 3, 0 )
+tile_data = PoolIntArray( -1834884, 1, 0, -1834883, 1, 0, -1834882, 1, 0, -1834881, 1, 0, -1834880, 1, 0, -1834879, 1, 0, -1834878, 1, 0, -1834877, 1, 0, -1834876, 1, 0, -1834875, 1, 0, -1834874, 1, 0, -1834873, 1, 0, -1834872, 1, 0, -1834871, 1, 0, -1834870, 1, 0, -1834869, 1, 0, -1834868, 1, 0, -1834867, 1, 0, -1769342, 4, 0, -1703806, 4, 0, -1638270, 4, 0, -1572734, 4, 0, -1507198, 4, 0, -1441662, 4, 0, -1376162, 1, 0, -1376161, 1, 0, -1376160, 1, 0, -1376126, 4, 0, -1310625, 4, 0, -1310590, 4, 0, -1245089, 4, 0, -1245054, 4, 0, -1179553, 4, 0, -1179547, 1, 0, -1179546, 1, 0, -1179545, 1, 0, -1179544, 1, 0, -1179543, 1, 0, -1179542, 1, 0, -1179541, 1, 0, -1179540, 1, 0, -1179539, 1, 0, -1179538, 1, 0, -1179537, 1, 0, -1179518, 4, 0, -1114017, 4, 0, -1113982, 4, 0, -1048481, 4, 0, -1048446, 5, 0, -982945, 4, 0, -982925, 1, 0, -982924, 1, 0, -982923, 1, 0, -982922, 1, 0, -982921, 1, 0, -982920, 1, 0, -982919, 1, 0, -982918, 1, 0, -982917, 1, 0, -982916, 1, 0, -982915, 1, 0, -982914, 1, 0, -982913, 1, 0, -982912, 1, 0, -982911, 1, 0, -982910, 1, 0, -982909, 1, 0, -982908, 1, 0, -917409, 4, 0, -851873, 4, 0, -786337, 4, 0, -720801, 4, 0, -655265, 4, 0, -589729, 4, 0, -524193, 4, 0, -458657, 4, 0, -393121, 4, 0, -327585, 4, 0, -262049, 5, 0, -131073, 0, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -196602, 1, 0, -196601, 1, 0, -196600, 1, 0, -196599, 1, 0, -196598, 1, 0, -196597, 1, 0, -196596, 1, 0, -196595, 1, 0, -196594, 1, 0, -196593, 1, 0, -196592, 1, 0, -196591, 1, 0, -196590, 1, 0, -196589, 3, 0, -196584, 0, 0, -196583, 1, 0, -196582, 1, 0, -196581, 1, 0, -196580, 3, 0, -196574, 0, 0, -196573, 1, 0, -196572, 1, 0, -196571, 1, 0, -196570, 1, 0, -196569, 3, 0, -196514, 1, 0, -196513, 1, 0, -196512, 1, 0, -131071, 4, 0, -130977, 4, 0, -65535, 4, 0, -65441, 4, 0, 1, 4, 0, 43, 0, 0, 44, 1, 0, 45, 1, 0, 46, 1, 0, 47, 1, 0, 48, 1, 0, 49, 1, 0, 50, 1, 0, 51, 1, 0, 52, 1, 0, 53, 3, 0, 95, 4, 0, 65537, 4, 0, 65631, 4, 0, 131073, 4, 0, 131167, 4, 0, 196609, 5, 0, 196703, 4, 0, 327679, 0, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 3, 0, 262239, 4, 0, 327727, 0, 0, 327728, 1, 0, 327729, 1, 0, 327730, 1, 0, 327731, 1, 0, 327732, 1, 0, 327733, 1, 0, 327734, 1, 0, 327735, 1, 0, 327736, 1, 0, 327737, 3, 0, 327775, 4, 0, 393311, 4, 0, 458767, 0, 0, 458768, 1, 0, 458769, 1, 0, 458770, 3, 0, 458847, 4, 0, 524383, 4, 0, 589919, 4, 0, 655403, 0, 0, 655404, 1, 0, 655405, 1, 0, 655406, 1, 0, 655407, 1, 0, 655408, 1, 0, 655409, 1, 0, 655410, 1, 0, 655411, 1, 0, 655412, 1, 0, 655413, 3, 0, 655455, 4, 0, 786431, 0, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 3, 0, 720991, 4, 0, 786527, 4, 0, 852063, 4, 0, 917599, 5, 0, 983083, 0, 0, 983084, 1, 0, 983085, 1, 0, 983086, 1, 0, 983087, 1, 0, 983088, 1, 0, 983089, 1, 0, 983090, 1, 0, 983091, 1, 0, 983092, 1, 0, 983093, 1, 0, 983094, 1, 0, 983095, 1, 0, 983096, 1, 0, 983097, 3, 0, 983105, 1, 0, 983106, 1, 0, 983107, 1, 0, 983114, 1, 0, 983115, 1, 0, 983116, 1, 0, 983124, 1, 0, 983125, 1, 0, 983126, 1, 0, 983134, 1, 0, 983135, 1, 0, 983136, 1, 0 )
 
-[node name="PathDrone" parent="." index="10" instance=ExtResource( 2 )]
-position = Vector2( -179.597, 178.695 )
-curve = SubResource( 1 )
+[node name="Player" parent="." index="4"]
+position = Vector2( 80, 266.05 )
 
-[node name="Turret" parent="PathDrone" index="1" instance=ExtResource( 3 )]
-position = Vector2( 445.835, 172.377 )
+[node name="LadderArea2" parent="LadderAreas" index="0" instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 45.5644, 8 )
+
+[node name="LadderArea3" parent="LadderAreas" index="1" instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 3056, 187.7 )
+
+[node name="CollisionShape2D" parent="LadderAreas/LadderArea3" index="0"]
+shape = SubResource( 7 )
+
+[node name="LadderArea4" parent="LadderAreas" index="2" instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 3056, -432 )
+
+[node name="CollisionShape2D" parent="LadderAreas/LadderArea4" index="0"]
+shape = SubResource( 8 )
+
+[node name="LadderArea5" parent="LadderAreas" index="3" instance=ExtResource( 2 )]
+position = Vector2( 4176, -704 )
+
+[node name="CollisionShape2D" parent="LadderAreas/LadderArea5" index="0"]
+shape = SubResource( 10 )
+
+[node name="Drone" parent="." index="10" instance=ExtResource( 3 )]
+position = Vector2( 304, 279.44 )
+
+[node name="Drone2" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( 368, 62.6178 )
+left = false
+
+[node name="Drone3" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 51.2602, 0 )
+left = false
+
+[node name="PathDrone" parent="." index="13" instance=ExtResource( 4 )]
+position = Vector2( 688, -176 )
+curve = SubResource( 2 )
+
+[node name="PathDrone2" parent="." index="14" instance=ExtResource( 4 )]
+position = Vector2( 1001.29, -176 )
+curve = SubResource( 2 )
+
+[node name="PathDrone3" parent="." index="15" instance=ExtResource( 4 )]
+position = Vector2( 1408, -96 )
+
+[node name="PathDrone4" parent="." index="16" instance=ExtResource( 4 )]
+position = Vector2( 1552, 64.6178 )
+
+[node name="PathDrone5" parent="." index="17" instance=ExtResource( 4 )]
+position = Vector2( 1424, 187.618 )
+
+[node name="PathDrone35" parent="." index="18" instance=ExtResource( 4 )]
+position = Vector2( 3264, -692.382 )
+curve = SubResource( 9 )
+
+[node name="PathDrone37" parent="." index="19" instance=ExtResource( 4 )]
+position = Vector2( 3712, -644.382 )
+curve = SubResource( 9 )
+
+[node name="PathDrone38" parent="." index="20" instance=ExtResource( 4 )]
+position = Vector2( 3712, -596.382 )
+curve = SubResource( 9 )
+
+[node name="PathDrone36" parent="." index="21" instance=ExtResource( 4 )]
+position = Vector2( 3264, -676.382 )
+curve = SubResource( 9 )
+
+[node name="PathDrone6" parent="." index="22" instance=ExtResource( 4 )]
+position = Vector2( 1424, 224 )
+
+[node name="PathDrone7" parent="." index="23" instance=ExtResource( 4 )]
+position = Vector2( 1408, 384 )
+curve = SubResource( 3 )
+
+[node name="PathDrone8" parent="." index="24" instance=ExtResource( 4 )]
+position = Vector2( 1408, 352 )
+curve = SubResource( 3 )
+
+[node name="PathDrone9" parent="." index="25" instance=ExtResource( 4 )]
+position = Vector2( 1936, 382.937 )
+curve = SubResource( 4 )
+
+[node name="PathDrone10" parent="." index="26" instance=ExtResource( 4 )]
+position = Vector2( 2256, 384 )
+curve = SubResource( 4 )
+
+[node name="PathDrone11" parent="." index="27" instance=ExtResource( 4 )]
+position = Vector2( 2560, 384 )
+curve = SubResource( 4 )
+
+[node name="PathDrone12" parent="." index="28" instance=ExtResource( 4 )]
+position = Vector2( 2880, 382.937 )
+curve = SubResource( 4 )
+
+[node name="PathDrone32" parent="." index="29" instance=ExtResource( 4 )]
+position = Vector2( 3031, 197.937 )
+curve = SubResource( 4 )
+
+[node name="PathDrone33" parent="." index="30" instance=ExtResource( 4 )]
+position = Vector2( 3031, -378.063 )
+curve = SubResource( 4 )
+
+[node name="PathDrone34" parent="." index="31" instance=ExtResource( 4 )]
+position = Vector2( 4150, -715.063 )
+curve = SubResource( 4 )
+
+[node name="Drone4" parent="." index="32" instance=ExtResource( 3 )]
+position = Vector2( 2128, 423.897 )
+
+[node name="Drone5" parent="." index="33" instance=ExtResource( 3 )]
+position = Vector2( 2416, 423.897 )
+
+[node name="Drone6" parent="." index="34" instance=ExtResource( 3 )]
+position = Vector2( 2736, 430.7 )
+
+[node name="EndOfLevel" parent="." index="35" instance=ExtResource( 5 )]
+position = Vector2( 4384, -944 )
+next_level = ExtResource( 6 )
+
+[editable path="LadderAreas/LadderArea2"]
+
+[editable path="LadderAreas/LadderArea3"]
+
+[editable path="LadderAreas/LadderArea4"]
+
+[editable path="LadderAreas/LadderArea5"]
