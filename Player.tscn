@@ -119,7 +119,7 @@ drag_margin_bottom = 0.35
 editor_draw_drag_margin = true
 
 [node name="ShotDelay" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 one_shot = true
 
 [node name="Spawns" type="Node2D" parent="."]

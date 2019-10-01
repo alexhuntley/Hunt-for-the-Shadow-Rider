@@ -2,3 +2,4 @@
 
 [node name="Prop" type="Sprite"]
 scale = Vector2( 2, 2 )
+z_index = -5

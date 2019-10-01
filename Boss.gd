@@ -5,11 +5,11 @@ var explosion = load("res://Explosion.tscn")
 var drone = load("res://Drone.tscn")
 
 var phase = -1
-var health = 5
+var health = 80
 
 func _ready():
 	randomize()
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(4.0), "timeout")
 	$PhaseTimer.start()
 	_on_PhaseTimer_timeout()
 
@@ -21,7 +21,7 @@ func _process(delta):
 		t += delta
 		if t >= 2*PI/omega:
 			t -= 2*PI/omega
-		velocity = 100*sin(omega*t)
+		velocity = 150*sin(omega*t)
 	else:
 		velocity += 800*delta
 	move_and_slide(Vector2(0,velocity))
@@ -55,7 +55,7 @@ func _on_PhaseTimer_timeout():
 
 func hit(pos):
 	health -= 1
-	print(health)
+	explode()
 	if health <= 0:
 		die()
 
